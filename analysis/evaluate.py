@@ -85,7 +85,7 @@ def loss_frame(path):
 
 
 def evaluate(run):
-    from cap_mpnn.analysis.plots import draw_panels
+    from analysis.plots import draw_panels
     run = Path(run)
     molecules = pd.read_csv(run / 'molecules.csv')
     with np.load(run / 'splits.npz', allow_pickle=False) as split:
@@ -129,5 +129,5 @@ def evaluate(run):
 
 if __name__ == '__main__':
     if len(sys.argv) != 2:
-        raise SystemExit('Usage: python3 -m cap_mpnn evaluate RUN_DIRECTORY')
+        raise SystemExit('Usage: python3 main.py evaluate RUN_DIRECTORY')
     evaluate(sys.argv[1])

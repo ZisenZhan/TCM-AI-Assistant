@@ -17,7 +17,7 @@ def rank_materials(associations, catalog):
 
 
 def rank(scores_path, links_path, catalog_path, output):
-    from cap_mpnn.data.prepare import read_table
+    from data.prepare import read_table
     scores = read_table(scores_path, usecols=['InChIKey', 'Score'], float_precision='round_trip')
     links = read_table(links_path, usecols=['CHP_ID', 'InChIKey'])
     catalog = read_table(catalog_path).rename(columns={'CHP_ID': 'Material'})
@@ -33,5 +33,5 @@ def rank(scores_path, links_path, catalog_path, output):
 
 if __name__ == '__main__':
     if len(sys.argv) != 5:
-        raise SystemExit('Usage: python3 -m cap_mpnn rank SCORES MATERIAL_LINKS MATERIAL_CATALOG OUTPUT_CSV')
+        raise SystemExit('Usage: python3 main.py rank SCORES MATERIAL_LINKS MATERIAL_CATALOG OUTPUT_CSV')
     rank(*sys.argv[1:])
