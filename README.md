@@ -56,13 +56,13 @@ Splits are saved and reused. Random holdouts use independent PU partitions for M
 
 ## Reproduce results
 
-Use the external `data` directory from the accompanying processed data package to regenerate manuscript results from archived scores:
+Use the external `data` directory from the processed data package to regenerate evaluation tables and figures from saved prediction scores:
 
 ```bash
 bash run.sh reproduce /path/to/data /path/to/results
 ```
 
-**Outputs:** Table 1, Tables S1/S3, and nine result panels (Fig. 1a-f and Fig. S5a-c).
+**Outputs:** Model-performance summaries, medicinal-material rankings, and result visualizations.
 
 ## Data
 
