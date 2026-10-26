@@ -5,9 +5,9 @@ import sys
 import numpy as np
 import pandas as pd
 
-from evaluate import comparison_table, full_table, evaluation_frames, loss_frame
-from plots import draw_panels
-from rank import rank_materials
+from cap_mpnn.analysis.evaluate import comparison_table, full_table, evaluation_frames, loss_frame
+from cap_mpnn.analysis.plots import draw_panels
+from cap_mpnn.analysis.rank import rank_materials
 
 
 def analyse(data):
@@ -37,7 +37,7 @@ def analyse(data):
 
 def main():
     if len(sys.argv) not in (2, 3):
-        raise SystemExit('Usage: python3 reproduce.py DATA_DIRECTORY [OUTPUT_DIRECTORY]')
+        raise SystemExit('Usage: python3 -m cap_mpnn reproduce DATA_DIRECTORY [OUTPUT_DIRECTORY]')
     data = Path(sys.argv[1])
     output = Path(sys.argv[2]) if len(sys.argv) == 3 else Path('results')
     frames, context = analyse(data)

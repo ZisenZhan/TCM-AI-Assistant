@@ -3,7 +3,7 @@ __pycache__/
 .venv/
 work/
 results/
-data/
+/data/
 *.csv
 *.tsv
 *.xlsx

@@ -47,5 +47,5 @@ def prepare(compounds_path, links_path, targets_path, output):
 
 if __name__ == '__main__':
     if len(sys.argv) != 5:
-        raise SystemExit('Usage: python3 prepare.py COMPOUNDS LINKS TARGETS OUTPUT_DIRECTORY')
+        raise SystemExit('Usage: python3 -m cap_mpnn prepare COMPOUNDS LINKS TARGETS OUTPUT_DIRECTORY')
     prepare(*sys.argv[1:])

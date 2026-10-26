@@ -8,11 +8,11 @@ import numpy as np
 import pandas as pd
 from rdkit.Chem.Scaffolds import MurckoScaffold
 
-from baselines import DescriptorFilter, train_member
-from evaluate import comparison_table, expected_hits, metrics
-from prepare import canonical_pool, prepare
-from rank import rank_materials, rank
-from splits import MEMBERS, make_splits, scaffold_split
+from cap_mpnn.modeling.baselines import DescriptorFilter, train_member
+from cap_mpnn.analysis.evaluate import comparison_table, expected_hits, metrics
+from cap_mpnn.data.prepare import canonical_pool, prepare
+from cap_mpnn.analysis.rank import rank_materials, rank
+from cap_mpnn.data.splits import MEMBERS, make_splits, scaffold_split
 
 
 class PipelineTests(unittest.TestCase):

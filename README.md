@@ -4,6 +4,15 @@ Target-linked positive-unlabeled learning for compound screening and medicinal-m
 
 Source dataset: [TCM-MKG](https://doi.org/10.5281/zenodo.13763953) ([paper](https://doi.org/10.1016/j.jpha.2025.101342)). This repository contains code only.
 
+```text
+cap_mpnn/
+  data/       # Molecular preparation and splits
+  modeling/   # MPNN, baselines, training and prediction
+  analysis/   # Evaluation, ranking, plots and reproduction
+tests/
+run.sh        # Unified command entry point
+```
+
 ```bash
 python3 -m pip install 'chemprop==2.2.0' 'scikit-learn==1.7.0' pandas matplotlib scipy pillow
 ```
@@ -24,6 +33,8 @@ bash run.sh evaluate work/scaffold
 ```
 
 An existing canonical `smiles,label` table can go directly to `train` (`1` positive, `0` unlabeled). Training averages ten final-epoch learners. Splits are saved and reused; random holdouts use independent PU partitions for MPNN and baselines, while scaffold runs share membership. Optional final `train` argument: `mpnn` or `baselines` (default `all`).
+
+From the repository root, `python3 -m cap_mpnn` can replace `bash run.sh` in every command.
 
 Evaluation writes metrics, curve data and figures under the run's `evaluation/` directory. Ranking averages linked scores, retaining repeated associations and stable tie order.
 

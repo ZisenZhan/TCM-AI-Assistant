@@ -7,8 +7,8 @@ import numpy as np
 import pandas as pd
 from threadpoolctl import threadpool_limits
 
-from prepare import canonical_smiles
-from splits import MEMBERS, make_splits
+from cap_mpnn.data.prepare import canonical_smiles
+from cap_mpnn.data.splits import MEMBERS, make_splits
 
 
 def train(input_path, output, mode='random', family='all'):
@@ -38,7 +38,7 @@ def train(input_path, output, mode='random', family='all'):
     test = split['test']
     labels = molecules.label.to_numpy()
     if family in ('all', 'mpnn'):
-        import mpnn
+        from cap_mpnn.modeling import mpnn
         scores, losses = [], []
         for member in range(MEMBERS):
             folder = output / f'member_{member:02d}'
@@ -55,7 +55,7 @@ def train(input_path, output, mode='random', family='all'):
                             member_scores=np.array(scores)[None, :, :])
         pd.concat(losses, ignore_index=True).to_csv(output / 'training_loss.csv', index=False)
     if family in ('all', 'baselines'):
-        from baselines import DescriptorFilter, descriptors, train_member, build_models
+        from cap_mpnn.modeling.baselines import DescriptorFilter, descriptors, train_member, build_models
         matrix, names = descriptors(molecules.smiles)
         # Random-split filtering uses development data; scaffold filtering is per member.
         shared_filter = DescriptorFilter().fit(matrix[split['development']]) if mode == 'random' else None
@@ -80,5 +80,5 @@ def train(input_path, output, mode='random', family='all'):
 
 if __name__ == '__main__':
     if len(sys.argv) not in (3, 4, 5):
-        raise SystemExit('Usage: python3 train.py MOLECULES RUN_DIRECTORY [random|scaffold] [all|mpnn|baselines]')
+        raise SystemExit('Usage: python3 -m cap_mpnn train MOLECULES RUN_DIRECTORY [random|scaffold] [all|mpnn|baselines]')
     train(*sys.argv[1:])

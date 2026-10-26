@@ -4,9 +4,9 @@ import sys
 
 import pandas as pd
 
-from mpnn import predict_checkpoints
-from prepare import canonical_pool, read_table
-from splits import MEMBERS
+from cap_mpnn.modeling.mpnn import predict_checkpoints
+from cap_mpnn.data.prepare import canonical_pool, read_table
+from cap_mpnn.data.splits import MEMBERS
 
 
 def predict(run, compounds_path, output):
@@ -22,5 +22,5 @@ def predict(run, compounds_path, output):
 
 if __name__ == '__main__':
     if len(sys.argv) != 4:
-        raise SystemExit('Usage: python3 predict.py RUN_DIRECTORY COMPOUNDS OUTPUT_CSV')
+        raise SystemExit('Usage: python3 -m cap_mpnn predict RUN_DIRECTORY COMPOUNDS OUTPUT_CSV')
     predict(*sys.argv[1:])

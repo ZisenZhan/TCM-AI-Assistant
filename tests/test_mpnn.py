@@ -5,7 +5,7 @@ import unittest
 import numpy as np
 import pandas as pd
 
-from mpnn import predict_checkpoints, train_member
+from cap_mpnn.modeling.mpnn import predict_checkpoints, train_member
 
 
 class MPNNTests(unittest.TestCase):
