@@ -13,3 +13,4 @@ results/
 *.log
 *.tif
 *.png
+!assets/banner.png
