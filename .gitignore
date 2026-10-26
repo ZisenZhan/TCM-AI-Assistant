@@ -1,0 +1,16 @@
+__pycache__/
+*.py[cod]
+.venv/
+work/
+results/
+data/
+*.csv
+*.tsv
+*.xlsx
+*.npz
+*.npy
+*.ckpt
+*.joblib
+*.log
+*.tif
+*.png
