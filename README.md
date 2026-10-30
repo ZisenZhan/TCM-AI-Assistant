@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/banner.png" width="100%" alt="TCM-AI-Assistant - AI for compound screening and herbal discovery">
+  <img src="assets/banner.png" width="280" alt="TCM-AI-Assistant - AI for compound screening and herbal discovery">
 </p>
 
 <p align="center">
